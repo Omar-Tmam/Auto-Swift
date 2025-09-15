@@ -41,6 +41,8 @@ dependencies:
   firebase_storage: ^13.0.1
   icons_launcher: ^3.0.2
   dropdown_button2: ^2.3.9
+  flutter_bloc: ^9.1.1
+  image_picker: ^1.2.0
 
 dev_dependencies:
   flutter_test:
