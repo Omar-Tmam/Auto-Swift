@@ -1,3 +1,6 @@
+import 'package:auto_swift/Core/utils/custom_adaptive_layout.dart';
+import 'package:auto_swift/Features/admin_view/presentation/views/widgets/mobile/mobile_admin_view.dart';
+import 'package:auto_swift/Features/admin_view/presentation/views/widgets/tablet/tablet_admin_view.dart';
 import 'package:flutter/material.dart';
 
 class AdminView extends StatelessWidget {
@@ -5,6 +8,9 @@ class AdminView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return CustomAdaptiveLayout(
+      mobileLayout: (context) => MobileLayoutAdminView(),
+      tabletLayout: (context) => TabletLayoutAdminView(),
+    );
   }
 }
