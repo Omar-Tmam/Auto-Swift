@@ -1,3 +1,4 @@
+import 'package:auto_swift/Core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +10,8 @@ class AutoSwift extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router();
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
+    );
   }
 }
