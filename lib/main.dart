@@ -19,6 +19,15 @@ class AutoSwift extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
+      darkTheme: ThemeData.dark().copyWith(
+        textTheme: TextTheme(
+          bodyLarge: const TextStyle(color: Colors.white),
+          bodyMedium: const TextStyle(color: Colors.white),
+          bodySmall: const TextStyle(color: Colors.white),
+        ),
+        appBarTheme: AppBarTheme(backgroundColor: Colors.black),
+        scaffoldBackgroundColor: Colors.black,
+      ),
     );
   }
 }

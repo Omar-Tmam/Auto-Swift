@@ -1,3 +1,4 @@
+import 'package:auto_swift/Core/utils/app_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,14 +8,19 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     required this.hint,
     required this.type,
+    required this.borderColor, // لازم يحدد من بره
     this.prefix,
     this.maxLength,
+    this.borderRadius = 12,
   });
+
   final TextEditingController controller;
   final String hint;
   final TextInputType type;
   final Widget? prefix;
   final int? maxLength;
+  final Color borderColor;
+  final double borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,14 @@ class CustomTextField extends StatelessWidget {
       keyboardType: type,
       suffix: prefix,
       maxLength: maxLength,
-      placeholderStyle: TextStyle(fontSize: 15,color: Colors.grey),
+      placeholderStyle: AppStyles.styleRegular16(context),
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: borderColor,
+          width: 1.5,
+        ),
+        borderRadius: BorderRadius.circular(borderRadius),
+      ),
     );
   }
 }
