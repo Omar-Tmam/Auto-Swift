@@ -31,7 +31,9 @@ class AddCarButton extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           radius: 8,
-          color: Colors.black,
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.blue
+              : Colors.black,
           height: 35,
           onTap: () {
             context.read<CarCubit>().submitCar(

@@ -1,4 +1,3 @@
-
 import 'package:auto_swift/Core/widgets/custom_container.dart';
 import 'package:auto_swift/Core/widgets/custom_drop_down.dart';
 
@@ -8,7 +7,6 @@ import 'package:auto_swift/Core/widgets/pick_image_widget.dart';
 import 'package:auto_swift/Features/admin_view/presentation/views/widgets/add_car_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 class MobileAdminViewBody extends StatefulWidget {
   const MobileAdminViewBody({super.key});
@@ -64,7 +62,6 @@ class _MobileAdminViewBodyState extends State<MobileAdminViewBody> {
               ),
               Expanded(
                 child: CustomTextField(
-                  
                     borderColor: Colors.white,
                     controller: _speed,
                     hint: 'Car Speed',
@@ -108,6 +105,9 @@ class _MobileAdminViewBodyState extends State<MobileAdminViewBody> {
             height: 20,
           ),
           PickImageWidget(),
+          SizedBox(
+            height: 20,
+          ),
           AddCarButton(
               model: _model,
               price: _price,
@@ -119,5 +119,3 @@ class _MobileAdminViewBodyState extends State<MobileAdminViewBody> {
     );
   }
 }
-
-

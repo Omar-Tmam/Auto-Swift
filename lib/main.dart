@@ -32,8 +32,8 @@ class AutoSwift extends StatelessWidget {
           bodyMedium: const TextStyle(color: Colors.white),
           bodySmall: const TextStyle(color: Colors.white),
         ),
-        appBarTheme: AppBarTheme(backgroundColor: Colors.black),
-        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: AppBarTheme(backgroundColor: Colors.black12),
+        scaffoldBackgroundColor: Colors.black12,
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:auto_swift/Core/utils/app_styles.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -29,8 +30,15 @@ class CustomTextField extends StatelessWidget {
       keyboardType: type,
       suffix: prefix,
       maxLength: maxLength,
-      placeholderStyle: AppStyles.styleRegular16(context),
+      placeholderStyle: AppStyles.styleRegular16(context).copyWith(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.white54
+            : Colors.black54,
+      ),
       decoration: BoxDecoration(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.grey[900]
+            : Colors.white,
         border: Border.all(
           color: borderColor,
           width: 1.5,
