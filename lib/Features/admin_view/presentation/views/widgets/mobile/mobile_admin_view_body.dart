@@ -24,14 +24,22 @@ class _MobileAdminViewBodyState extends State<MobileAdminViewBody> {
   final TextEditingController _price = TextEditingController();
   final TextEditingController _speed = TextEditingController();
   List<String> avaliableColors = ['Black', 'Red', 'Blue'];
-  List<String> brands = ['BMW', 'Mercedes', 'Audi'];
+  List<String> brands = [
+    "BMW",
+    "Audi",
+    "Mercedes",
+    "Honda",
+    "Lamborghini",
+    "Ferrari",
+  ];
+
   String? selectedBrand;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CarCubit, CarState>(
       listener: (context, state) {
-        // TODO: implement listener
+
       },
       builder: (context, state) {
         return Padding(

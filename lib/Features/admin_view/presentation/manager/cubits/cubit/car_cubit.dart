@@ -1,4 +1,3 @@
-
 import 'package:auto_swift/Features/admin_view/data/repos/car_repo.dart';
 import 'package:auto_swift/Features/admin_view/presentation/manager/cubits/cubit/car_state.dart';
 import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
@@ -21,18 +20,21 @@ class CarCubit extends Cubit<CarState> {
   }
 
   Future<void> submitCar({
-   required Car car,
+    required Car car,
   }) async {
     try {
       if (imageUrl == null) throw Exception("Please pick an image first");
       emit(CarLoading());
-      await carRepo.addCar(
-       car: car
-      );
+      await carRepo.addCar(car: car);
 
       emit(CarSuccess());
     } catch (e) {
       emit(CarFailure(e.toString()));
     }
+  }
+
+  void reset() {
+    imageUrl = null;
+    emit(CarInitial());
   }
 }

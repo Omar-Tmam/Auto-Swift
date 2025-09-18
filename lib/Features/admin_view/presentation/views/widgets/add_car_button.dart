@@ -1,8 +1,10 @@
+import 'package:auto_swift/Core/utils/app_styles.dart';
 import 'package:auto_swift/Core/widgets/custom_button.dart';
 import 'package:auto_swift/Core/widgets/custom_text.dart';
 import 'package:auto_swift/Features/admin_view/presentation/manager/cubits/cubit/car_cubit.dart';
 import 'package:auto_swift/Features/admin_view/presentation/manager/cubits/cubit/car_state.dart';
 import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,31 +30,57 @@ class AddCarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CarCubit, CarState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is CarSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Added Car Successfully "),
+              backgroundColor: Colors.green,
+            ),
+          );
+        } else if (state is CarFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Failed to Add Car  ${state.message}"),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      },
       builder: (context, state) {
         return CustomButton(
           radius: 8,
           color: Theme.of(context).brightness == Brightness.dark
               ? Colors.blue
               : Colors.black,
-          height: 35,
+          height: 40,
           onTap: () {
             context.read<CarCubit>().submitCar(
-                car: Car(
+                  car: Car(
                     brand: selectedBrand ?? '',
                     name: _model.text,
                     price: _price.text,
                     speed: _speed.text,
                     engine: _engine.text,
-                    image: context.read<CarCubit>().imageUrl ?? ''));
+                    image: context.read<CarCubit>().imageUrl ?? '',
+                  ),
+                );
+            _model.clear();
+            _price.clear();
+            _engine.clear();
+            _speed.clear();
+            context.read<CarCubit>().reset();
           },
           width: double.infinity,
           child: state is CarLoading
-              ? CircularProgressIndicator(
-                  color: Colors.white,
+              ? const Center(
+                  child: CupertinoActivityIndicator(
+                    color: Colors.white,
+                  ),
                 )
               : Center(
                   child: CustomText(
+                  fontSize: AppStyles.styleRegular16(context).fontSize,
                   text: 'Add Car',
                   color: Colors.white,
                 )),
