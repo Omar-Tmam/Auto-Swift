@@ -51,8 +51,8 @@ class AddCarButton extends StatelessWidget {
         return CustomButton(
           radius: 8,
           color: Theme.of(context).brightness == Brightness.dark
-              ? Colors.blue
-              : Colors.black,
+              ? Colors.white
+              : Colors.blueAccent,
           height: 40,
           onTap: () {
             context.read<CarCubit>().submitCar(
@@ -80,9 +80,12 @@ class AddCarButton extends StatelessWidget {
                 )
               : Center(
                   child: CustomText(
+                  fontWeight: FontWeight.w500,
                   fontSize: AppStyles.styleRegular16(context).fontSize,
                   text: 'Add Car',
-                  color: Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black
+                      : Colors.white,
                 )),
         );
       },

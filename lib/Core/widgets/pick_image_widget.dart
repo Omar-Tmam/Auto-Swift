@@ -15,7 +15,9 @@ class PickImageWidget extends StatelessWidget {
       width: double.infinity,
       height: 40,
       decoration: BoxDecoration(
-        color: Colors.black,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.white
+            : Colors.blueAccent,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: Colors.grey),
       ),
@@ -51,12 +53,16 @@ class PickImageWidget extends StatelessWidget {
               onPressed: () => context.read<CarCubit>().pickImage(),
               icon: Icon(
                 Icons.image,
-                color: Colors.white,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.black
+                    : Colors.white,
               ),
               label: CustomText(
                 fontSize: AppStyles.styleRegular16(context).fontSize,
                 text: "Pick Image",
-                color: Colors.white,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.black
+                    : Colors.white,
               ),
             );
           }

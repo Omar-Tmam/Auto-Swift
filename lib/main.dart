@@ -1,7 +1,9 @@
+import 'package:auto_swift/Core/cubits/cubit/theme_cubit.dart';
 import 'package:auto_swift/Core/utils/app_router.dart';
 import 'package:auto_swift/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,24 +18,36 @@ class AutoSwift extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.grey[200],
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.grey[200],
-        ),
-      ),
-      themeMode: ThemeMode.light,
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router,
-      darkTheme: ThemeData.dark().copyWith(
-        textTheme: TextTheme(
-          bodyLarge: const TextStyle(color: Colors.white),
-          bodyMedium: const TextStyle(color: Colors.white),
-          bodySmall: const TextStyle(color: Colors.white),
-        ),
-        appBarTheme: AppBarTheme(backgroundColor: Colors.black12),
-        scaffoldBackgroundColor: Colors.black12,
+    return BlocProvider(
+      create: (context) => ThemeCubit(),
+      child: BlocBuilder<ThemeCubit, ThemeMode>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            theme: ThemeData.light().copyWith(
+              scaffoldBackgroundColor: Colors.grey[200],
+              appBarTheme: AppBarTheme(
+                elevation: 0,
+                scrolledUnderElevation: 0,
+                backgroundColor: Colors.grey[200],
+              ),
+            ),
+            themeMode: state,
+            debugShowCheckedModeBanner: false,
+            routerConfig: AppRouter.router,
+            darkTheme: ThemeData.dark().copyWith(
+              textTheme: TextTheme(
+                bodyLarge: const TextStyle(color: Colors.white),
+                bodyMedium: const TextStyle(color: Colors.white),
+                bodySmall: const TextStyle(color: Colors.white),
+              ),
+              appBarTheme: AppBarTheme(
+                  scrolledUnderElevation: 0,
+                  elevation: 0,
+                  backgroundColor: Colors.grey[900]),
+              scaffoldBackgroundColor: Colors.grey[900],
+            ),
+          );
+        },
       ),
     );
   }

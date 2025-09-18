@@ -12,7 +12,7 @@ class HomeViewWelcome extends StatelessWidget {
     return Row(
       children: [
         CustomText(
-          color: Colors.grey,
+          color: Colors.blueAccent,
           text: 'Hello,',
           fontSize: getResponsiveFontSize(context, fontSize: 40),
           fontWeight: AppStyles.styleSemiBold18(context).fontWeight,

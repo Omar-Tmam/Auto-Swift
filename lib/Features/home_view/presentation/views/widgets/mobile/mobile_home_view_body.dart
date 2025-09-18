@@ -60,7 +60,6 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
               });
             },
           ),
-
           const SizedBox(height: 20),
 
           /// عرض العربيات
@@ -74,12 +73,10 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                   return const Center(child: Text('No cars found'));
                 }
-
                 final cars = snapshot.data!.docs
                     .map((doc) =>
                         Car.fromFirestore(doc.data() as Map<String, dynamic>))
                     .toList();
-
                 return GridView.builder(
                   itemCount: cars.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
