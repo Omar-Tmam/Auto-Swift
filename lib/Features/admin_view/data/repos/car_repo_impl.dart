@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:auto_swift/Features/admin_view/data/repos/car_repo.dart';
+import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,7 +10,8 @@ class CarRepoImpl implements CarRepo {
   final FirebaseStorage storage;
   final ImagePicker picker;
 
-  CarRepoImpl({required this.firestore, required this.storage, required this.picker});
+  CarRepoImpl(
+      {required this.firestore, required this.storage, required this.picker});
 
   @override
   Future<String> uploadCarImage() async {
@@ -23,23 +25,14 @@ class CarRepoImpl implements CarRepo {
   }
 
   @override
-  Future<void> addCar({
-    required String name,
-    required String price,
-    required String engine,
-    required String speed,
-
-    required String brand,
-    required String imageUrl,
-  }) async {
+  Future<void> addCar({required Car car}) async {
     await firestore.collection("cars").add({
-      "name": name,
-      "price": price,
-      "engine": engine,
-      "speed": speed,
-
-      "brand": brand,
-      "image": imageUrl,
+      "name": car.name,
+      "price": car.price,
+      "engine": car.engine,
+      "speed": car.speed,
+      "brand": car.brand,
+      "image": car.image,
       "createdAt": DateTime.now(),
     });
   }

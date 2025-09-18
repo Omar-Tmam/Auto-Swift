@@ -1,6 +1,7 @@
 
 import 'package:auto_swift/Features/admin_view/data/repos/car_repo.dart';
 import 'package:auto_swift/Features/admin_view/presentation/manager/cubits/cubit/car_state.dart';
+import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CarCubit extends Cubit<CarState> {
@@ -20,24 +21,13 @@ class CarCubit extends Cubit<CarState> {
   }
 
   Future<void> submitCar({
-    required String name,
-    required String price,
-    required String engine,
-    required String speed,
-
-    required String brand,
+   required Car car,
   }) async {
     try {
       if (imageUrl == null) throw Exception("Please pick an image first");
       emit(CarLoading());
       await carRepo.addCar(
-        name: name,
-        price: price,
-        engine: engine,
-        speed: speed,
-
-        brand: brand,
-        imageUrl: imageUrl!,
+       car: car
       );
 
       emit(CarSuccess());

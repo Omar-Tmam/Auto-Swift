@@ -1,3 +1,4 @@
+import 'package:auto_swift/Features/home_view/presentation/views/widgets/mobile/mobile_home_view_body.dart';
 import 'package:flutter/material.dart';
 
 class MobileHomeView extends StatelessWidget {
@@ -5,6 +6,13 @@ class MobileHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+        scrolledUnderElevation: 0,
+      ),
+      body: MobileHomeViewBody(),
+    );
+    ;
   }
 }

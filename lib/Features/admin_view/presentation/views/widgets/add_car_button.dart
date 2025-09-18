@@ -2,6 +2,7 @@ import 'package:auto_swift/Core/widgets/custom_button.dart';
 import 'package:auto_swift/Core/widgets/custom_text.dart';
 import 'package:auto_swift/Features/admin_view/presentation/manager/cubits/cubit/car_cubit.dart';
 import 'package:auto_swift/Features/admin_view/presentation/manager/cubits/cubit/car_state.dart';
+import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,11 +38,13 @@ class AddCarButton extends StatelessWidget {
           height: 35,
           onTap: () {
             context.read<CarCubit>().submitCar(
-                name: _model.text,
-                price: _price.text,
-                engine: _engine.text,
-                speed: _speed.text,
-                brand: selectedBrand ?? '');
+                car: Car(
+                    brand: selectedBrand ?? '',
+                    name: _model.text,
+                    price: _price.text,
+                    speed: _speed.text,
+                    engine: _engine.text,
+                    image: context.read<CarCubit>().imageUrl ?? ''));
           },
           width: double.infinity,
           child: state is CarLoading
