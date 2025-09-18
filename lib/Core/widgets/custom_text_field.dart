@@ -1,6 +1,5 @@
 import 'package:auto_swift/Core/utils/app_styles.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
