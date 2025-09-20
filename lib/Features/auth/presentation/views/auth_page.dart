@@ -47,13 +47,18 @@ class _AuthPageState extends State<AuthPage> {
                 );
               } else if (state is AuthLoginSuccess) {
                 final role = context.read<AuthCubit>().role;
+
                 if (role == "admin") {
                   context.push(AppRouter.kAdminView);
                 } else {
                   context.push(AppRouter.kHomeView);
                 }
+                _emailController.clear();
+                _passwordController.clear();
               } else if (state is AuthSignUpSuccess) {
                 context.push(AppRouter.kHomeView);
+                _emailController.clear();
+                _passwordController.clear();
               }
             },
             builder: (context, state) {

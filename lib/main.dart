@@ -33,23 +33,10 @@ class AutoSwift extends StatelessWidget {
           return MaterialApp.router(
             locale: DevicePreview.locale(context),
             builder: DevicePreview.appBuilder,
-            theme: ThemeData.light().copyWith(
-              scaffoldBackgroundColor: Colors.grey[200],
-              appBarTheme: AppBarTheme(
-                elevation: 0,
-                scrolledUnderElevation: 0,
-                backgroundColor: Colors.grey[200],
-              ),
-            ),
             themeMode: state,
             debugShowCheckedModeBanner: false,
             routerConfig: AppRouter.router,
             darkTheme: ThemeData.dark().copyWith(
-              textTheme: const TextTheme(
-                bodyLarge: TextStyle(color: Colors.white),
-                bodyMedium: TextStyle(color: Colors.white),
-                bodySmall: TextStyle(color: Colors.white),
-              ),
               appBarTheme: AppBarTheme(
                 scrolledUnderElevation: 0,
                 elevation: 0,

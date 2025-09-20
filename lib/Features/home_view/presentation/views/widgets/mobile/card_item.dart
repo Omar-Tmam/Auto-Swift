@@ -23,14 +23,12 @@ class CardItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // الصورة مع الهيرو
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: Image.network(
               car.image,
               height: 120,
               width: double.infinity,
-              fit: BoxFit.cover,
             ),
           ),
           Padding(

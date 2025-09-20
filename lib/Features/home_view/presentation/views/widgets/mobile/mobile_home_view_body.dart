@@ -44,7 +44,7 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
             children: [
               IconButton(
                   onPressed: () {
-                    context.push(AppRouter.kAuthView);
+                    context.pop();
                   },
                   icon: const Icon(Icons.logout)),
               HomeViewHeader(),
@@ -78,17 +78,12 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
           /// عرض العربيات
           Expanded(
             child: StreamBuilder<QuerySnapshot>(
-              stream: StreamRepoImpl().carsStream(selectedBrand ?? ''),
+              stream: selectedBrand == null
+                  ? StreamRepoImpl().allCarsStream()
+                  : StreamRepoImpl().carsStream(selectedBrand ?? ''),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
-                }
-                if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return Center(
-                      child: CustomText(
-                    text: 'Choose a brand',
-                    fontSize: getResponsiveFontSize(context, fontSize: 26),
-                  ));
                 }
                 final cars = snapshot.data!.docs
                     .map((doc) =>

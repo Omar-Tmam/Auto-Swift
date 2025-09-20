@@ -50,7 +50,6 @@ class CarDetailsView extends StatelessWidget {
               child: Image.network(
                 car.image,
                 height: 250,
-                fit: BoxFit.cover,
               ),
             ),
             const SizedBox(height: 20),
