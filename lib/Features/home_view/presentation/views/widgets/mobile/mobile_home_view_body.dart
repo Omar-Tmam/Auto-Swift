@@ -89,9 +89,10 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
                     final car = cars[index];
                     return GestureDetector(
                       onTap: () {
-                        context.go(AppRouter.kCarDetailsView, extra: car);
+                        context.push(AppRouter.kCarDetailsView, extra: car);
                       },
-                      child: CardItem(car: car),
+                      child: CardItem
+                      (car: car),
                     );
                   },
                 );
