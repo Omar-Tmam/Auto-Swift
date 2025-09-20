@@ -1,3 +1,4 @@
+import 'package:auto_swift/Core/utils/app_router.dart';
 import 'package:auto_swift/Core/utils/app_styles.dart';
 import 'package:auto_swift/Core/widgets/custom_text.dart';
 import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
@@ -8,6 +9,7 @@ import 'package:auto_swift/Features/home_view/presentation/views/widgets/mobile/
 import 'package:auto_swift/Features/home_view/presentation/views/widgets/mobile/home_view_welcome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MobileHomeViewBody extends StatefulWidget {
   const MobileHomeViewBody({super.key});
@@ -85,7 +87,12 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
                   ),
                   itemBuilder: (context, index) {
                     final car = cars[index];
-                    return CardItem(car: car);
+                    return GestureDetector(
+                      onTap: () {
+                        context.go(AppRouter.kCarDetailsView, extra: car);
+                      },
+                      child: CardItem(car: car),
+                    );
                   },
                 );
               },
