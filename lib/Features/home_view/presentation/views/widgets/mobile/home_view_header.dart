@@ -12,21 +12,7 @@ class HomeViewHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const CircleAvatar(
-              backgroundImage: NetworkImage('https://i.pravatar.cc/300'),
-              radius: 30,
-            ),
-            ThemeIconButton()
-          ],
-        ),
-      ],
-    );
+    return ThemeIconButton();
   }
 }
 

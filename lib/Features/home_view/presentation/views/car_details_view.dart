@@ -38,113 +38,117 @@ class CarDetailsView extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // صورة العربية
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(
-              bottom: Radius.circular(24),
-            ),
-            child: Image.network(
-              car.image,
-              height: 250,
-              fit: BoxFit.cover,
-            ),
-          ),
-          const SizedBox(height: 20),
-
-          // تفاصيل العربية
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Card(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.black54
-                  : Colors.blueGrey.shade100,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // صورة العربية
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(24),
               ),
-              elevation: 4,
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // اسم العربية + الماركة
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomText(
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white
-                              : Colors.black,
-                          text: car.name.isNotEmpty ? car.name : "Unknown Car",
-                          fontSize:
-                              getResponsiveFontSize(context, fontSize: 22),
-                          fontWeight:
-                              AppStyles.styleSemiBold22(context).fontWeight,
-                        ),
-                        Chip(
-                          label: CustomText(
+              child: Image.network(
+                car.image,
+                height: 250,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // تفاصيل العربية
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Card(
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.grey
+                    : Colors.blueGrey.shade100,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                elevation: 4,
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // اسم العربية + الماركة
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomText(
                             color:
                                 Theme.of(context).brightness == Brightness.dark
                                     ? Colors.white
                                     : Colors.black,
-                            text: car.brand,
+                            text:
+                                car.name.isNotEmpty ? car.name : "Unknown Car",
                             fontSize:
-                                getResponsiveFontSize(context, fontSize: 14),
+                                getResponsiveFontSize(context, fontSize: 22),
                             fontWeight:
-                                AppStyles.styleSemiBold18(context).fontWeight,
+                                AppStyles.styleSemiBold22(context).fontWeight,
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
+                          Chip(
+                            label: CustomText(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Colors.white
+                                  : Colors.black,
+                              text: car.brand,
+                              fontSize:
+                                  getResponsiveFontSize(context, fontSize: 14),
+                              fontWeight:
+                                  AppStyles.styleSemiBold18(context).fontWeight,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
 
-                    CustomText(
-                        text:
-                            "Car Price: ${car.price.isNotEmpty ? car.price : "--"} \$",
-                        fontSize: getResponsiveFontSize(context, fontSize: 18),
-                        fontWeight:
-                            AppStyles.styleSemiBold18(context).fontWeight,
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black),
-                    const Divider(height: 32),
+                      CustomText(
+                          text:
+                              "Car Price: ${car.price.isNotEmpty ? car.price : "--"} \$",
+                          fontSize:
+                              getResponsiveFontSize(context, fontSize: 18),
+                          fontWeight:
+                              AppStyles.styleSemiBold18(context).fontWeight,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black),
+                      const Divider(height: 32),
 
-                    // معلومات إضافية
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _buildInfoIcon(
-                          context,
-                          FontAwesomeIcons.gaugeHigh,
-                          car.speed.isNotEmpty ? "${car.speed} km/h" : "--",
-                        ),
-                        _buildInfoIcon(
-                          context,
-                          FontAwesomeIcons.gasPump,
-                          "Petrol",
-                        ),
-                        _buildInfoIcon(
-                          context,
-                          FontAwesomeIcons.gear,
-                          car.engine.isNotEmpty ? car.engine : "--",
-                        ),
-                      ],
-                    ),
-                  ],
+                      // معلومات إضافية
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          _buildInfoIcon(
+                            context,
+                            FontAwesomeIcons.gaugeHigh,
+                            car.speed.isNotEmpty ? "${car.speed} km/h" : "--",
+                          ),
+                          _buildInfoIcon(
+                            context,
+                            FontAwesomeIcons.gasPump,
+                            "Petrol",
+                          ),
+                          _buildInfoIcon(
+                            context,
+                            FontAwesomeIcons.gear,
+                            car.engine.isNotEmpty ? car.engine : "--",
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
 
-          const SizedBox(height: 30),
+            const SizedBox(height: 30),
 
- 
-          ContactSeller(),
-          const SizedBox(height: 20),
-        ],
+            ContactSeller(),
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }
@@ -170,4 +174,3 @@ class CarDetailsView extends StatelessWidget {
     );
   }
 }
-

@@ -8,9 +8,6 @@ class AdminView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomAdaptiveLayout(
-      mobileLayout: (context) => MobileLayoutAdminView(),
-      tabletLayout: (context) => TabletLayoutAdminView(),
-    );
+    return MobileLayoutAdminView();
   }
 }

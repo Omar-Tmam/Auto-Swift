@@ -11,7 +11,7 @@ class CustomTextField extends StatelessWidget {
     required this.borderColor, // لازم يحدد من بره
     this.prefix,
     this.maxLength,
-    this.borderRadius = 12,
+    this.borderRadius = 12, this.suffix,
   });
 
   final TextEditingController controller;
@@ -21,10 +21,12 @@ class CustomTextField extends StatelessWidget {
   final int? maxLength;
   final Color borderColor;
   final double borderRadius;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
     return CupertinoTextField(
+      prefix: suffix,
       controller: controller,
       placeholder: hint,
       keyboardType: type,

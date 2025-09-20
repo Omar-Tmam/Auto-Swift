@@ -17,7 +17,9 @@ class CardItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       elevation: 3,
-      color: Colors.white,
+      color: Theme.of(context).brightness == Brightness.dark
+          ? Colors.grey[900]
+          : Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

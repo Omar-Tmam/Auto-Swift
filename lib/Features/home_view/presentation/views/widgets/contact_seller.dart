@@ -14,7 +14,7 @@ class ContactSeller extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).brightness == Brightness.dark
-              ? Colors.black54
+              ? Colors.white
               : Colors.blueAccent,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
@@ -25,6 +25,9 @@ class ContactSeller extends StatelessWidget {
         onPressed: () {},
         child: CustomText(
           text: "Contact Seller",
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.black
+              : Colors.white,
           fontSize: getResponsiveFontSize(context, fontSize: 18),
           fontWeight: AppStyles.styleSemiBold18(context).fontWeight,
         ),

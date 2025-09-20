@@ -1,5 +1,6 @@
 import 'package:auto_swift/Core/utils/app_router.dart';
 import 'package:auto_swift/Core/utils/app_styles.dart';
+import 'package:auto_swift/Core/utils/size_config.dart';
 import 'package:auto_swift/Core/widgets/custom_text.dart';
 import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
 import 'package:auto_swift/Features/home_view/data/repos/stream_repo_impl.dart';
@@ -37,7 +38,19 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HomeViewHeader(),
+          SizedBox(height: 40),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                  onPressed: () {
+                    context.push(AppRouter.kAuthView);
+                  },
+                  icon: const Icon(Icons.logout)),
+              HomeViewHeader(),
+            ],
+          ),
+
           const SizedBox(height: 20),
 
           /// hello
@@ -71,7 +84,11 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
                   return const Center(child: CircularProgressIndicator());
                 }
                 if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                  return const Center(child: Text('No cars found'));
+                  return Center(
+                      child: CustomText(
+                    text: 'Choose a brand',
+                    fontSize: getResponsiveFontSize(context, fontSize: 26),
+                  ));
                 }
                 final cars = snapshot.data!.docs
                     .map((doc) =>
@@ -79,11 +96,14 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
                     .toList();
                 return GridView.builder(
                   itemCount: cars.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 300,
                     crossAxisSpacing: 8,
                     mainAxisSpacing: 12,
-                    childAspectRatio: 1 / 1.6,
+                    childAspectRatio: MediaQuery.sizeOf(context).width >
+                            SizeConfig.tabletBreakPoint
+                        ? 1 / 1.2
+                        : 1 / 1.7,
                   ),
                   itemBuilder: (context, index) {
                     final car = cars[index];
@@ -91,8 +111,7 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
                       onTap: () {
                         context.push(AppRouter.kCarDetailsView, extra: car);
                       },
-                      child: CardItem
-                      (car: car),
+                      child: CardItem(car: car),
                     );
                   },
                 );
