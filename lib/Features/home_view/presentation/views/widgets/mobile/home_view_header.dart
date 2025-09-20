@@ -12,30 +12,42 @@ class HomeViewHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
       children: [
-        const CircleAvatar(
-          backgroundImage: NetworkImage('https://i.pravatar.cc/300'),
-          radius: 30,
+        const SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const CircleAvatar(
+              backgroundImage: NetworkImage('https://i.pravatar.cc/300'),
+              radius: 30,
+            ),
+            ThemeIconButton()
+          ],
         ),
-        CustomText(
-          text: 'Port said , Egypt',
-          fontSize: AppStyles.styleSemiBold22(context).fontSize,
-        ),
-        IconButton(
-          icon: Icon(
-              color: context.watch<ThemeCubit>().state == ThemeMode.dark
-                  ? Colors.yellow
-                  : Colors.black,
-              context.watch<ThemeCubit>().state == ThemeMode.dark
-                  ? CupertinoIcons.sun_max_fill
-                  : CupertinoIcons.moon_fill),
-          onPressed: () {
-            context.read<ThemeCubit>().toggleTheme();
-          },
-        )
       ],
+    );
+  }
+}
+
+class ThemeIconButton extends StatelessWidget {
+  const ThemeIconButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(
+          color: context.watch<ThemeCubit>().state == ThemeMode.dark
+              ? Colors.yellow
+              : Colors.black,
+          context.watch<ThemeCubit>().state == ThemeMode.dark
+              ? CupertinoIcons.sun_max_fill
+              : CupertinoIcons.moon_fill),
+      onPressed: () {
+        context.read<ThemeCubit>().toggleTheme();
+      },
     );
   }
 }

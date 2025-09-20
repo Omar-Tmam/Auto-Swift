@@ -1,6 +1,8 @@
 import 'package:auto_swift/Features/admin_view/data/repos/car_repo_impl.dart';
 import 'package:auto_swift/Features/admin_view/presentation/manager/cubits/cubit/car_cubit.dart';
 import 'package:auto_swift/Features/admin_view/presentation/views/admin_view.dart';
+import 'package:auto_swift/Features/auth/data/repos/auth_repo_impl.dart';
+import 'package:auto_swift/Features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:auto_swift/Features/auth/presentation/views/auth_page.dart';
 import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
 import 'package:auto_swift/Features/home_view/presentation/views/car_details_view.dart';
@@ -20,7 +22,10 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: kAuthView,
-        builder: (context, state) => const AuthPage(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => AuthCubit(AuthRepoImpl()),
+          child: const AuthPage(),
+        ),
       ),
       GoRoute(
         path: kHomeView,
