@@ -1,6 +1,5 @@
 import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
 import 'package:auto_swift/Features/home_view/presentation/views/widgets/mobile/car_data_widget.dart';
-import 'package:auto_swift/Features/home_view/presentation/views/widgets/mobile/mobile_home_view_body.dart';
 import 'package:flutter/material.dart';
 
 class CardItem extends StatelessWidget {

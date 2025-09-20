@@ -13,6 +13,5 @@ class MobileHomeView extends StatelessWidget {
       ),
       body: MobileHomeViewBody(),
     );
-    ;
   }
 }

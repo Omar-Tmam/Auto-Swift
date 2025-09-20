@@ -1,5 +1,4 @@
 import 'package:auto_swift/Core/utils/app_styles.dart';
-import 'package:auto_swift/Core/widgets/custom_container.dart';
 import 'package:auto_swift/Core/widgets/custom_text.dart';
 import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
 import 'package:auto_swift/Features/home_view/data/repos/stream_repo_impl.dart';
@@ -8,7 +7,6 @@ import 'package:auto_swift/Features/home_view/presentation/views/widgets/mobile/
 import 'package:auto_swift/Features/home_view/presentation/views/widgets/mobile/home_view_header.dart';
 import 'package:auto_swift/Features/home_view/presentation/views/widgets/mobile/home_view_welcome.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MobileHomeViewBody extends StatefulWidget {
