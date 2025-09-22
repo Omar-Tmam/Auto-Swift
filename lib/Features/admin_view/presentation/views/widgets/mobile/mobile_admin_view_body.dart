@@ -1,6 +1,5 @@
 import 'package:auto_swift/Core/utils/app_styles.dart';
 import 'package:auto_swift/Core/widgets/custom_text.dart';
-import 'package:auto_swift/Core/widgets/custom_container.dart';
 import 'package:auto_swift/Core/widgets/custom_drop_down.dart';
 import 'package:auto_swift/Core/widgets/custom_text_field.dart';
 import 'package:auto_swift/Core/widgets/pick_image_widget.dart';

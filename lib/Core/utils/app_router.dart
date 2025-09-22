@@ -7,7 +7,6 @@ import 'package:auto_swift/Features/auth/presentation/views/auth_page.dart';
 import 'package:auto_swift/Features/home_view/data/models/car_model.dart';
 import 'package:auto_swift/Features/home_view/presentation/views/car_details_view.dart';
 import 'package:auto_swift/Features/home_view/presentation/views/home_view.dart';
-import 'package:auto_swift/Features/home_view/presentation/views/widgets/mobile/mobile_home_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

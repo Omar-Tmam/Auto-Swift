@@ -97,7 +97,7 @@ class _MobileHomeViewBodyState extends State<MobileHomeViewBody> {
                     mainAxisSpacing: 12,
                     childAspectRatio: MediaQuery.sizeOf(context).width >
                             SizeConfig.tabletBreakPoint
-                        ? 1 / 1.2
+                        ? 1 / 1.3
                         : 1 / 1.7,
                   ),
                   itemBuilder: (context, index) {
